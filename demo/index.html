@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <title>a1-components demo</title>
 </head>
-<body ng-app="demo">
-    <nlb-subselect></nlb-subselect>
+<body ng-app="demo" ng-controller="DemoCtrl">
+<nlb-subselect
+        ng-model="selectedCategory"
+        options="categories">
+</nlb-subselect>
+
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script type="text/javascript" src="../dist/a1-components.min.js"></script>
     <script type="text/javascript" src="./app.js"></script>
