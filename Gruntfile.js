@@ -16,13 +16,6 @@ module.exports = function (grunt) {
             files: ['Gruntfile.js', '<%=application.src %>/**/*.js']
         },
 
-        watch: {
-            js: {
-                files: ['<%= jshint.files %>'],
-                tasks: ['jshint', 'concat', 'uglify']
-            }
-        },
-
         concat: {
             options: {
                 // define a string to put between each file in the concatenated output
@@ -43,7 +36,18 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'dist/<%= bower.name %>.min.js': ['<%= concat.dist.dest %>']
+                    '<%=application.dist %>/<%= bower.name %>.min.js': ['<%= concat.dist.dest %>']
+                }
+            }
+        },
+
+        sass: {
+            options: {
+                sourceMap: true
+            },
+            dist: {
+                files: {
+                    '<%=application.dist %>/a1-components.css': '<%=application.src %>/a1-components.scss'
                 }
             }
         },
@@ -64,6 +68,17 @@ module.exports = function (grunt) {
                     }*/
                 }
             }
+        },
+
+        watch: {
+            js: {
+                files: ['<%= jshint.files %>'],
+                tasks: ['jshint', 'concat', 'uglify']
+            },
+            css: {
+                files: ['<%=application.src %>/**/*.scss'],
+                tasks: ['sass']
+            }
         }
     });
 
@@ -71,12 +86,14 @@ module.exports = function (grunt) {
     [
         'jshint',
         'concat',
-        'uglify'
+        'uglify',
+        'sass'
     ]);
 
     grunt.registerTask('demo',[
         'connect:demo',
-        'watch:js'
+        'watch:js',
+        'watch:css'
     ]);
 
     grunt.registerTask('default', 'build:dist');
