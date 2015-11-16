@@ -58,6 +58,32 @@ $baseline-grid: 5px;
 
 }
 
+/*.nlb-menu-container
+{
+  //background-color: #333333;
+
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  .nlb-subselect-drilldown
+  {
+    list-style: none;
+
+    li {
+      float: left;
+      position: relative;
+    }
+
+  }
+
+}*/
+
 .nlb-subselect-breadcrumb
 {
 }
