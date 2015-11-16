@@ -79,6 +79,16 @@ module.exports = function (grunt) {
                 files: ['<%=application.src %>/**/*.scss'],
                 tasks: ['sass']
             }
+        },
+
+        concurrent:
+        {
+            options: {
+                logConcurrentOutput: true
+            },
+            watch: {
+                tasks: ['watch:js', 'watch:css']
+            }
         }
     });
 
@@ -92,8 +102,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('demo',[
         'connect:demo',
-        'watch:js',
-        'watch:css'
+        'concurrent:watch'
     ]);
 
     grunt.registerTask('default', 'build:dist');

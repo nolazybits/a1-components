@@ -7,8 +7,11 @@
 </head>
 <body ng-app="demo" ng-controller="DemoCtrl">
 <nlb-subselect
+        style="width: 200px"
         ng-model="selectedCategory"
-        options="categories">
+        options="categories"
+        label="Options"
+        placeholder="No category selected...">
 </nlb-subselect>
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>

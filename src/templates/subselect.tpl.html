@@ -1,14 +1,22 @@
-My directive
-<div class="nlb-subselect-container">
-    <ul class="nlb-subselect-breadcrumb">
-        <li ng-repeat="breadcrumb in breadcrumbs">
-            <a href="#" ng-if="!$last" ng-click="selectOption(breadcrumb.id)">{{breadcrumb.name}}</a></span>
-            <span ng-if="$last">{{breadcrumb.name}}</span>
-        </li>
-    </ul>
-    <ul class="nlb-subselect-drilldown">
-        <li ng-repeat="option in options | filter:{parentId:selectedOption}">
-            <a href="#" ng-click="selectOption(option.id)">{{option.name}}</a>
-        </li>
-    </ul>
+<div class="nlb-subselect">
+    <div id="nlb-placeholder-{{::uniqueId}}" class="nlb-placeholder" ng-click="showSubselect = true">
+        <label>{{label}}</label>
+        <div class="nlb-select-value" role="combobox">
+            <span>{{getSelectedOption().name}}</span>
+            <span class="nlb-select-icon" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="nlb-menu-container" ng-show="showSubselect">
+        <ul class="nlb-subselect-breadcrumb">
+            <li ng-repeat="breadcrumb in breadcrumbs">
+                <a href="#" ng-if="!$last" ng-click="selectOption(breadcrumb.id)">{{breadcrumb.name}}</a></span>
+                <span ng-if="$last">{{breadcrumb.name}}</span>
+            </li>
+        </ul>
+        <ul class="nlb-subselect-drilldown">
+            <li ng-repeat="option in options | filter:{parentId:selectedOption}">
+                <a href="#" ng-click="selectOption(option.id)">{{option.name}}</a>
+            </li>
+        </ul>
+    </div>
 </div>

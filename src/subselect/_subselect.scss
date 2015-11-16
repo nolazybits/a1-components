@@ -1,6 +1,63 @@
-.nlb-subselect-breadcrumb
-{
+$baseline-grid: 5px;
+
+
+.nlb-subselect {
+  width: inherit;
+  cursor: pointer;
+}
+
+.nlb-select-value {
+  display: flex;
+  align-items: center;
+  padding: 2px 2px 1px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: rgba(0,0,0,12);
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+  box-sizing: content-box;
+  min-width: 8 * $baseline-grid;
+  min-height: 26px;
+  flex-grow: 1;
+
+  *:first-child {
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: calc(100% - 2 * #{$baseline-grid});
+    transform: translate3d(0, 2px, 0);
+  }
+
+  .nlb-select-icon {
+    display: block;
+    align-items: flex-end;
+    text-align: end;
+    width: 3 * $baseline-grid;
+    margin: 0 .5 * $baseline-grid;
+    transform: translate3d(0, 1px, 0);
+  }
+
+  .nlb-select-icon:after {
+    display: block;
+    content: '\25BC';
+    position: relative;
+    top: 2px;
+    speak: none;
+    transform: scaleY(0.6) scaleX(1);
+  }
+
+/*
+  &.nlb-select-placeholder {
+    display: flex;
+    order: 1;
+    pointer-events: none;
+    -webkit-font-smoothing: antialiased;
+    padding-left: 2px;
+    z-index: 1;
+  }*/
+
+}
+
+.nlb-subselect-breadcrumb
+{
 }

@@ -6,11 +6,14 @@
 
     function subSelectDirective($parse)
     {
+        var uniqueId = 1;
         return {
             restrict: 'E',
             require: ['ngModel'],
             scope: {
-                options: '='
+                options: '=',
+                label: '@',
+                placeholder: '@'
             },
             templateUrl: '../src/templates/subselect.tpl.html',
             link: {
@@ -66,6 +69,15 @@
                 createBreadcrumbs(id);
             };
 
+            scope.getSelectedOption = function()
+            {
+                if(scope.selectedOption)
+                {
+                    return lookupOptions[scope.selectedOption];
+                }
+                return {name: scope.placeholder, id: null, parentId: null};
+            };
+
             //  remove the watcher when the scope is destroyed
             scope.$on('$destroy', function()
             {
@@ -73,6 +85,7 @@
             });
 
             createLookup();
+            scope.showSubselect = false;
             scope.selectedOption = null;
             scope.breadcrumbs = [];
         }
